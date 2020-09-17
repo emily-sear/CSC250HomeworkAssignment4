@@ -11,9 +11,8 @@ public class Main
 		
 		System.out.println("Your binary number in decimal is: " + Main.decimalToHex(Main.binaryToDecimal(inputedNum)));
 		
-		
-		
 	}
+	
 	public static int binaryToDecimal(String binaryNumber)
 	{
 		int answer = 0;
@@ -33,12 +32,31 @@ public class Main
 		}
 		return answer;
 	}
+	
+	public static int binaryToDecimalClassExample(String bin)
+	{
+		//does the same thing as binaryToDecimal()
+		int place = 1;
+		int sum = 0;
+		
+		for(int i = bin.length() - 1; i >= 0; i--)
+		{
+			if(bin.charAt(i) == '1')
+			{
+				sum += place;
+			}
+			place *= 2;
+		}
+		
+		return sum;
+	}
+	
 	public static String decimalToHex(int decimal)
 	{
 		String answer = ""; 
 		String map = "0123456789ABCDEF";
 		
-		while(decimal != 0)
+		while(decimal > 0)
 		{
 			answer = map.charAt(decimal%16) + answer;
 			decimal = decimal/16;
